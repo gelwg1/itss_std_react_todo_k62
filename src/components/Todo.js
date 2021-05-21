@@ -26,14 +26,13 @@ const [items, putItems, clearItems] = useStorage();
   //   { key: getKey(), text: '明日の準備をする', done: false },
   //   /* テストコード 終了 */
   // ]);
-    const [filter, setFilter] = React.useState('ALL');
+      const [filter, setFilter] = React.useState('ALL');
 
   const displayItems = items.filter(item => {
     if (filter === 'ALL') return true;
     if (filter === 'TODO') return !item.done;
     if (filter === 'DONE') return item.done;
   });
-  
     const handleCheck = checked => {
     const newItems = items.map(item => {
       if (item.key === checked.key) {
@@ -43,13 +42,10 @@ const [items, putItems, clearItems] = useStorage();
     });
     putItems(newItems);
   };
-
-  const handleAdd = text => {
+    const handleAdd = text => {
     putItems([...items, { key: getKey(), text, done: false }]);
   };
-  
   const handleFilterChange = value => setFilter(value);
-  
   return (
     <div className="panel">
       <div className="panel-heading">
@@ -68,9 +64,9 @@ const [items, putItems, clearItems] = useStorage();
         />
       ))}
       <div className="panel-block">
-       {displayItems.length} items
+        {items.length} items
       </div>
-      <div className="panel-block">
+            <div className="panel-block">
         <button className="button is-light is-fullwidth" onClick={clearItems}>
           全てのToDoを削除
         </button>
